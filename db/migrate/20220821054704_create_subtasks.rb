@@ -1,7 +1,7 @@
-class CreateTasks < ActiveRecord::Migration[6.1]
+class CreateSubtasks < ActiveRecord::Migration[6.1]
   def change
-    create_table :tasks do |t|
-      t.integer :user_id
+    create_table :subtasks do |t|
+      t.integer :task_id
       t.string :name
       t.string :date
       t.date :due_date
@@ -13,4 +13,3 @@ class CreateTasks < ActiveRecord::Migration[6.1]
     end
   end
 end
-

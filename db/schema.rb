@@ -10,15 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_18_054550) do
+ActiveRecord::Schema.define(version: 2022_08_21_054704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "subtasks", force: :cascade do |t|
+    t.integer "task_id"
+    t.string "name"
+    t.string "date"
+    t.date "due_date"
+    t.integer "weight"
+    t.boolean "statement"
+    t.text "memo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.integer "user_id"
     t.string "name"
-    t.date "date"
+    t.string "date"
     t.date "due_date"
     t.integer "weight"
     t.boolean "statement"

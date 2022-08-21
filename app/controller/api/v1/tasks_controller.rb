@@ -2,13 +2,10 @@ module Api
     module V1
       class TasksController < ApplicationController
         before_action :set_task, only: [:show, :update, :destroy]
+        before_action :set_user_tasks,only:[:index,:done_tasks,:user_tasks,:do_tasks]
         def index
-            @tasks=Task.where(statement: false)
-            render json: { status: :ok, data: @tasks }
-        end
-
-        def show
-            render json: @task
+            tasks=@tasks.where(statement: false,)
+            render json: tasks, include:[:subtasks],status: 200
         end
 
         def create
@@ -33,12 +30,21 @@ module Api
         end
 
         def done_tasks
-            @tasks=Task.where(statement: true)
-            render json: { status: :ok, data: @tasks }
+            tasks=@tasks.where(statement: true)
+            render json: tasks, include:[:subtasks],status: 200
+        end
+
+        def do_tasks
+            tasks=@tasks.where(date: params[:date])
+            render json: tasks, include:[:subtasks],status: 200
         end
         private
         def set_task
             @task = Task.find(params[:id])
+        end
+
+        def set_user_tasks
+            @tasks=Task.where(user_id: params[:id])
         end
 
         def task_params
