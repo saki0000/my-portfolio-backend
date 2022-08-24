@@ -6,13 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 (1..3).each do |i|
-    Subtask.create(
-      task_id: 1,
+    Task.create(
+      user_id: 1,
       name: "name#{i}",
-      date: "today",
+      date: "week",
       due_date: Date.today,
       weight: i,
-      statement: true,
+      statement: false,
       memo: "memo#{i}"
     )
   end
