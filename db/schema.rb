@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2022_08_21_054704) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.integer "user_id"
+    t.text "user_id"
     t.string "name"
     t.string "date"
     t.date "due_date"
