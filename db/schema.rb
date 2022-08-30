@@ -18,7 +18,8 @@ ActiveRecord::Schema.define(version: 2022_08_21_054704) do
   create_table "subtasks", force: :cascade do |t|
     t.integer "task_id"
     t.string "name"
-    t.string "date"
+    t.string "box"
+    t.date "date"
     t.date "due_date"
     t.integer "weight"
     t.boolean "statement"
@@ -30,7 +31,8 @@ ActiveRecord::Schema.define(version: 2022_08_21_054704) do
   create_table "tasks", force: :cascade do |t|
     t.text "user_id"
     t.string "name"
-    t.string "date"
+    t.string "box"
+    t.date "date"
     t.date "due_date"
     t.integer "weight"
     t.boolean "statement"

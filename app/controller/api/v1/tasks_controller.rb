@@ -39,7 +39,7 @@ module Api
             end
 
             def do_tasks
-                tasks=@tasks.where(statement:false).where(date: params[:date])
+                tasks=@tasks.where(statement:false).where(box: params[:box])
                 render json: tasks, include:[:subtasks],status: 200
             end
             private
@@ -52,7 +52,7 @@ module Api
             end
 
             def task_params
-                params.require(:task).permit(:user_id,:name,:date,:due_date,:weight,:statement,:memo)
+                params.require(:task).permit(:user_id,:name,:box,:date,:due_date,:weight,:statement,:memo)
             end
         end
     end
