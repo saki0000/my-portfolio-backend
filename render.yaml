@@ -12,7 +12,7 @@ services:
     envVars:
       - key: dpg-ccjf8omn6mpuvklogat0-a
         fromDatabase:
-          name: ghd_database
+          name: ghd database
           property: connectionString
       - key: db078f438a840e5527e6118edffd7f1b
         sync: false
