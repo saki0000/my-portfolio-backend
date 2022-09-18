@@ -1,7 +1,7 @@
 databases:
-  - name: ghd-app
-    databaseName: ghd-app
-    user: ghd-app
+  - name: ghdapp
+    databaseName: ghdapp
+    user: ghdapp
 
 services:
   - type: web
