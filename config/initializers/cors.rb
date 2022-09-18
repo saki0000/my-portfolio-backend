@@ -7,10 +7,10 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'https://ghd-ijhz8q25m-saki0000.vercel.app'
+    origins '*'
 
     resource '*',
       headers: :any,
-      methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      methods: :any,
   end
 end
