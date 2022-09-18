@@ -5,14 +5,14 @@ databases:
 
 services:
   - type: web
-    name: mysite
+    name: ghd-app
     env: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
       - key: dpg-ccjf8omn6mpuvklogat0-a
         fromDatabase:
-          name: mysite
+          name: ghd_database
           property: connectionString
       - key: db078f438a840e5527e6118edffd7f1b
         sync: false
