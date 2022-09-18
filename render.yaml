@@ -1,11 +1,11 @@
 databases:
-  - name: ghdapp
-    databaseName: ghdapp
-    user: ghdapp
+  - name: mysite
+    databaseName: mysite
+    user: mysite
 
 services:
   - type: web
-    name: ghd-app
+    name: mysite
     env: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
