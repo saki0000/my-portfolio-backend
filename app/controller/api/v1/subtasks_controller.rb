@@ -9,7 +9,7 @@ module Api
             def create
                 @subtask=Subtask.new(task_id:params[:task_id],
                     name:task_params[:name],
-                    box:task_params[:box]
+                    box:task_params[:box],
                     date:task_params[:date],
                     due_date:task_params[:due_date],
                     weight:task_params[:weight],
@@ -45,7 +45,7 @@ module Api
                 @subtask = Subtask.find(params[:id])
             end
             def task_params
-                params.require(:subtask).permit(:name,:box:date,:due_date,:weight,:statement,:memo)
+                params.require(:subtask).permit(:name,:box,:date,:due_date,:weight,:statement,:memo)
             end
         end
     end

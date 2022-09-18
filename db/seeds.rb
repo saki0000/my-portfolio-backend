@@ -5,14 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-(1..3).each do |i|
+(1..5).each do |i|
     Task.create(
-      user_id: 1,
+      user_id: "b288n1CTXShp30CgRlas08QuvvI2",
       name: "name#{i}",
       date: "week",
       due_date: Date.today,
       weight: i,
-      statement: false,
+      statement: true,
       memo: "memo#{i}"
     )
   end
