@@ -1,7 +1,7 @@
 databases:
-  - name: mysite
-    databaseName: mysite
-    user: mysite
+  - name: ghd database
+    databaseName: ghd_database
+    user: ghd_database_user
 
 services:
   - type: web
@@ -10,7 +10,7 @@ services:
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
-      - key: DATABASE_URL
+      - key: dpg-ccjf8omn6mpuvklogat0-a
         fromDatabase:
           name: mysite
           property: connectionString
