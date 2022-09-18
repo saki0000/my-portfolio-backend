@@ -10,9 +10,9 @@ services:
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
-      - key: dpg-ccjf8omn6mpuvklogat0-a
+      - key: postgres://mysite:jf1Huyx5rPNOryIqhsMPfB50CudTEYPK@dpg-ccjem9hgp3jn57uv2fr0-a/mysite_2kbg
         fromDatabase:
           name: ghd database
           property: connectionString
-      - key:71ff80427ecb809df50eebca159f556a
+      - key: 71ff80427ecb809df50eebca159f556a
         sync: false
