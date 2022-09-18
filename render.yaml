@@ -10,9 +10,9 @@ services:
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
-      - key: dpg-ccjf8omn6mpuvklogat0-a
+      - key: DATABASE_URL
         fromDatabase:
           name: mysite
           property: connectionString
-      - key: 71fed2ed7950741fdd9b318ad4719805
+      - key: RAILS_MASTER_KEY
         sync: false
