@@ -14,5 +14,5 @@ services:
         fromDatabase:
           name: ghd database
           property: connectionString
-      - key: db078f438a840e5527e6118edffd7f1b
+      - key:71ff80427ecb809df50eebca159f556a
         sync: false
