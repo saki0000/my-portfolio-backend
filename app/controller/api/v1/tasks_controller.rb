@@ -45,6 +45,7 @@ module Api
 
             def date_tasks
                 tasks=@tasks.where(statement:false).where(box:"calender").where(date: params[:date])
+                render json: tasks,include:[:subtasks],status: 200
             end
             private
             def set_task
