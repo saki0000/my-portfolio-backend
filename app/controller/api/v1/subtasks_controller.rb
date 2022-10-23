@@ -3,7 +3,7 @@ module Api
         class SubtasksController < ApplicationController
             before_action :set_task,only: [:update,:destroy]
             def index
-                @subtasks=Subtask.where(statement:false).where(task_id:params[:task_id])
+                @subtasks=Subtask.where(task_id:params[:task_id]).where(statement:false)
                 render json:@subtasks
             end
             def create
