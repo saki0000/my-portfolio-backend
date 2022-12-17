@@ -3,7 +3,7 @@ module Api
         class SubtasksController < ApplicationController
             before_action :set_task,only: [:update,:destroy]
             def index
-                @subtasks=Subtask.where(task_id:params[:task_id]).where(statement:false)
+                @subtasks=Subtask.where(task_id:params[:task_id]).where(user_id:params[:user_id]).where(statement:false)
                 render json:@subtasks
             end
             def create
@@ -45,7 +45,7 @@ module Api
                 @subtask = Subtask.find(params[:id])
             end
             def task_params
-                params.require(:subtask).permit(:name,:box,:date,:due_date,:weight,:statement,:memo)
+                params.require(:subtask).permit(:user_id,:name,:box,:date,:due_date,:weight,:statement,:memo)
             end
         end
     end
