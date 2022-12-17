@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_17_084645) do
+ActiveRecord::Schema.define(version: 2022_12_17_094641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2022_12_17_084645) do
     t.string "box"
     t.date "date"
     t.date "due_date"
-    t.integer "weight"
+    t.string "weight"
     t.boolean "statement"
     t.text "memo"
     t.datetime "created_at", precision: 6, null: false
