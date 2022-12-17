@@ -1,18 +1,22 @@
 databases:
-  - name: asap
-    databaseName: asap
-    user: asap
+  - name: asap-task
+    databaseName: asap-task
+    user: asap-task
+    plan: starter
+    region: singapore
 
 services:
   - type: web
-    name: asap
+    name: asap-task
     env: ruby
+    plan: starter
+    region: singapore
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: asap
+          name: asap-task
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
