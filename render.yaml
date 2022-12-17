@@ -1,7 +1,7 @@
 databases:
   - name: asap-task
-    databaseName: asap-task
-    user: asap-task
+    databaseName: asap-task-db
+    user: asap-task-user
     plan: starter
     region: singapore
 
