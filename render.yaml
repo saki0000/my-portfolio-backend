@@ -2,14 +2,14 @@ databases:
   - name: asap-task
     databaseName: asap
     user: asap
-    plan: starter
+    plan: free
     region: singapore
 
 services:
   - type: web
     name: asap-task
     env: ruby
-    plan: starter
+    plan: free
     region: singapore
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
