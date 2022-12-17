@@ -1,7 +1,7 @@
 databases:
-  - name: ghd database
-    databaseName: ghd_app
-    user: ghd_app_user
+  - name: asap-database
+    databaseName: asap_database
+    user: asap_database_user
 
 services:
   - type: web
@@ -10,9 +10,9 @@ services:
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
-      - key: postgres://ghd_app_user:8DJMoUFpBpi95XPY6qOOfvyqkpZkgAwj@dpg-ceeqouh4reb3r0oev940-a/ghd_app
+      - key: postgres://asap_database_user:K3VXbwGEABXNkviiD38pH37tPUw1a1PD@dpg-ceesdpg2i3mum5tdv0f0-a/asap_database
         fromDatabase:
-          name: ghd database
+          name: asap-database
           property: connectionString
       - key: 71ff80427ecb809df50eebca159f556a
         sync: false
