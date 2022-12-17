@@ -12,7 +12,7 @@ services:
     envVars:
       - key: postgres://ghd_app_user:8DJMoUFpBpi95XPY6qOOfvyqkpZkgAwj@dpg-ceeqouh4reb3r0oev940-a/ghd_app
         fromDatabase:
-          name: ghdーapp
+          name: ghd_app
           property: connectionString
       - key: 71ff80427ecb809df50eebca159f556a
         sync: false
