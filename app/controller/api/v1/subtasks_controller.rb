@@ -14,7 +14,8 @@ module Api
                     due_date:task_params[:due_date],
                     weight:task_params[:weight],
                     statement:task_params[:statement],
-                    memo:task_params[:memo])
+                    memo:task_params[:memo],
+                    user_id:task_params[:user_id])
                 if @subtask.save
                     render json: @subtask
                 else
@@ -31,7 +32,8 @@ module Api
                     due_date:task_params[:due_date],
                     weight:task_params[:weight],
                     statement:task_params[:statement],
-                    memo:task_params[:memo])
+                    memo:task_params[:memo],
+                    user_id:task_params[:user_id])
                     render json: @subtask
                 else
                     render json: @subtask.errors, status: :unprocessable_entity
