@@ -47,6 +47,11 @@ module Api
                 tasks=@tasks.where(statement:false).where(date: params[:date])
                 render json: tasks,include:[:subtasks],status: 200
             end
+
+            def goal_tasks
+                tasks=@tasks.where(statement: false).where(goal: true)
+                render json: tasks,include:[:subtasks],status: 200
+            end
             private
             def set_task
                 @task = Task.find(params[:id])
