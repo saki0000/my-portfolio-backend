@@ -62,7 +62,7 @@ module Api
             end
 
             def task_params
-                params.require(:task).permit(:user_id,:name,:box,:date,:due_date,:weight,:statement,:memo)
+                params.require(:task).permit(:user_id,:name,:box,:date,:due_date,:weight,:statement,:memo,:goal)
             end
         end
     end
