@@ -2,7 +2,7 @@ module Api
     module V1
         class TasksController < ApplicationController
             before_action :set_task, only: [:show, :update, :destroy]
-            before_action :set_user_tasks,only:[:index,:done_tasks,:user_tasks,:do_tasks,:date_tasks]
+            before_action :set_user_tasks,only:[:index,:done_tasks,:user_tasks,:do_tasks,:date_tasks,:goal_tasks]
             def index
                 tasks=@tasks.where(statement: false,)
                 render json: tasks, include:[:subtasks],status: 200
@@ -49,7 +49,7 @@ module Api
             end
 
             def goal_tasks
-                tasks=@tasks.where(statement:false)
+                tasks=@tasks.where(statement:false).where(goal:true)
                 render json: tasks,include:[:subtasks],status: 200
             end
             private
