@@ -49,7 +49,7 @@ module Api
             end
 
             def goal_tasks
-                tasks=@tasks.where(statement:false).where(goal:true)
+                tasks=@tasks.where(statement:false).where(goal: params[:goal])
                 render json: tasks,include:[:subtasks],status: 200
             end
             private
