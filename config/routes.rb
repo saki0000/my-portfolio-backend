@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get '/do_tasks', to: "tasks#do_tasks"
       get '/date_tasks', to: "tasks#date_tasks"
       get '/goal_tasks', to: "tasks#goal_tasks"
+      get '/goal_done_tasks', to: "tasks#goal_done_tasks"
     end
   end
 end
