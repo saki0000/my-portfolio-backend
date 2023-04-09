@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_05_083909) do
+ActiveRecord::Schema.define(version: 2023_04_03_081336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 2023_03_05_083909) do
     t.integer "user_id"
   end
 
+  create_table "task_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id", null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations", null: false
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "task_anc_desc_idx", unique: true
+    t.index ["descendant_id"], name: "task_desc_idx"
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.text "user_id"
     t.string "name"
@@ -41,6 +49,7 @@ ActiveRecord::Schema.define(version: 2023_03_05_083909) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "goal"
+    t.integer "parent_id"
   end
 
 end

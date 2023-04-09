@@ -1,10 +1,10 @@
 module Api
     module V1
         class TasksController < ApplicationController
-            before_action :set_task, only: [:show, :update, :destroy]
-            before_action :set_user_tasks,only:[:index,:done_tasks,:user_tasks,:do_tasks,:date_tasks,:goal_tasks,:goal_done_tasks]
+            before_action :set_task, only: [:show, :update, :destroy,:show_subtasks,:create_subtask]
+            before_action :set_user_tasks,only:[:index,:done_tasks,:user_tasks,:do_tasks,:date_tasks,:goal_tasks,:goal_done_tasks,:tree]
             def index
-                tasks=@tasks.where(statement: false,)
+                tasks=@tasks.where(statement: false,).roots
                 render json: tasks, include:[:subtasks],status: 200
             end
 
@@ -21,6 +21,15 @@ module Api
                 end
             end
 
+            def create_subtask
+                @newtask=Task.new(task_params)
+                if @task.add_child(@newtask)
+                    render json:@newtask
+                else
+                    render json: @task.errors, status: :unprocessable_entitiy
+                end
+            end
+
             def update
                 if @task.update(task_params)
                 render json: @task
@@ -34,17 +43,17 @@ module Api
             end
 
             def done_tasks
-                tasks=@tasks.where(statement: true)
+                tasks=@tasks.where(statement: true).roots
                 render json: tasks, include:[:subtasks],status: 200
             end
 
             def do_tasks
-                tasks=@tasks.where(statement:false).where(box: params[:box])
+                tasks=@tasks.where(statement:false).where(box: params[:box]).roots
                 render json: tasks, include:[:subtasks],status: 200
             end
 
             def date_tasks
-                tasks=@tasks.where(statement:false).where(date: params[:date])
+                tasks=@tasks.where(statement:false).where(date: params[:date]).roots
                 render json: tasks,include:[:subtasks],status: 200
             end
 
@@ -56,6 +65,11 @@ module Api
                 tasks=@tasks.where(statement:true).where(goal:params[:goal])
                 render json: tasks, include:[:subtasks],status:200
             end
+            
+            def show_subtasks
+                tasks=@task.children.where(statement:false)
+                render json:tasks,status:200
+            end
             private
             def set_task
                 @task = Task.find(params[:id])
@@ -66,7 +80,7 @@ module Api
             end
 
             def task_params
-                params.require(:task).permit(:user_id,:name,:box,:date,:due_date,:weight,:statement,:memo,:goal)
+                params.require(:task).permit(:user_id,:name,:box,:date,:due_date,:weight,:statement,:memo,:goal,:parent_id)
             end
         end
     end
